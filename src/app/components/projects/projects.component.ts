@@ -112,48 +112,7 @@ export class ProjectsComponent {
       duration: '10-12 weeks',
       isFeatured: true
     },
-    {
-      id: 7,
-      title: 'Weather Dashboard',
-      description: 'A weather application with location-based forecasts, historical data, and interactive maps. Features include weather alerts and customizable widgets.',
-      image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'beginner',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'OpenWeather API'],
-      features: ['Weather forecasts', 'Location tracking', 'Historical data', 'Weather alerts', 'Interactive maps'],
-      githubUrl: 'https://github.com/mern-weather-app',
-      liveUrl: 'https://mern-weather-app.vercel.app',
-      difficulty: 'Easy',
-      duration: '2-3 weeks',
-      isFeatured: false
-    },
-    {
-      id: 8,
-      title: 'Fitness Tracking Platform',
-      description: 'A comprehensive fitness tracking application with workout planning, progress monitoring, and social features. Includes nutrition tracking and goal setting.',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'intermediate',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Chart.js'],
-      features: ['Workout planning', 'Progress tracking', 'Nutrition logging', 'Goal setting', 'Social features'],
-      githubUrl: 'https://github.com/mern-fitness-app',
-      liveUrl: 'https://mern-fitness-app.vercel.app',
-      difficulty: 'Medium',
-      duration: '5-6 weeks',
-      isFeatured: false
-    },
-    {
-      id: 9,
-      title: 'Portfolio Website Builder',
-      description: 'A drag-and-drop portfolio website builder with customizable templates and themes. Users can create professional portfolios without coding knowledge.',
-      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      category: 'intermediate',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'React DnD'],
-      features: ['Drag-and-drop editor', 'Customizable templates', 'Theme selection', 'SEO optimization', 'Analytics'],
-      githubUrl: 'https://github.com/mern-portfolio-builder',
-      liveUrl: 'https://mern-portfolio-builder.vercel.app',
-      difficulty: 'Medium',
-      duration: '4-5 weeks',
-      isFeatured: false
-    }
+    
   ];
 
   get filteredProjects(): Project[] {
