@@ -1,0 +1,41 @@
+<section class="section instructor-section">
+  <div class="container">
+    <h2 class="section-title">Meet Your MERN Expert</h2>
+    <div class="instructor-card">
+      <img
+        class="avatar"
+        [src]="instructor.avatarUrl"
+        [alt]="'Photo of ' + instructor.name"
+        aria-describedby="instructor-desc"
+      />
+      <div class="instructor-content">
+        <h3 class="instructor-name">{{ instructor.name }}</h3>
+        <p class="instructor-title">{{ instructor.title }}</p>
+        <p class="desc" id="instructor-desc">{{ instructor.description }}</p>
+        <div class="skills-certifications">
+          <div class="skills">
+            <h4>Key Skills</h4>
+            <ul class="skills-list">
+              <li *ngFor="let skill of instructor.skills" class="skill-item">{{ skill }}</li>
+            </ul>
+          </div>
+          <div class="certifications">
+            <h4>Certifications</h4>
+            <ul class="certifications-list">
+              <li *ngFor="let cert of instructor.certifications" class="cert-item">{{ cert }}</li>
+            </ul>
+          </div>
+        </div>
+        <a
+          class="link"
+          [href]="instructor.linkedinUrl"
+          target="_blank"
+          rel="noopener"
+          aria-label="View Jane Doe's LinkedIn profile"
+        >
+          View LinkedIn <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,240 @@
+/* Section */
+.section {
+  padding: 4rem 1rem;
+  padding-inline: 4.5rem;
+  padding-block: 3rem;
+  background: var(--bg-secondary);
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-dark);
+}
+
+.sub {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.card-wrap {
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--bg-primary);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  padding-inline: 4.5rem;
+  padding-block: 3rem;
+}
+
+/* Container */
+.curriculum-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Card */
+.curriculum-card {
+  background: linear-gradient(145deg, #ffffff, #f9fafb);
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-light);
+}
+
+.curriculum-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Header */
+.card-header {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background: var(--bg-primary);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-left h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.timeline {
+  font-size: 0.9rem;
+  color: var(--primary-blue);
+  font-weight: 600;
+  background: rgba(59, 130, 246, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+}
+
+.step {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--primary-blue);
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+  box-shadow: 0 3px 6px rgba(37, 99, 235, 0.3);
+}
+
+/* Icon */
+.card-header i {
+  transition: transform 0.3s ease;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.curriculum-card.open .card-header i {
+  transform: rotate(180deg);
+  color: var(--primary-blue);
+}
+
+/* Body */
+.card-body {
+  background: var(--gray-50);
+  padding: 0 1.5rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out;
+  border-top: 1px solid var(--border-light);
+}
+
+.curriculum-card.open .card-body {
+  max-height: 500px;
+  opacity: 1;
+  padding: 1rem 1.5rem;
+}
+
+.card-body ul {
+  margin: 0;
+  padding: 1rem 0 1rem 1.25rem;
+  list-style: none;
+}
+
+.card-body li {
+  margin: 0.75rem 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.card-body li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--secondary-green);
+  font-size: 1rem;
+  font-weight: bold;
+  background: rgba(16, 185, 129, 0.1);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .section {
+    padding-inline: 1rem;
+    padding-block: 2rem;
+  }
+  
+  .card-wrap {
+    padding-inline: 1rem;
+    padding-block: 1.5rem;
+  }
+  
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .header-left {
+    gap: 0.75rem;
+  }
+  
+  .header-right {
+    align-self: flex-end;
+  }
+  
+  .step {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+  
+  .header-left h3 {
+    font-size: 1rem;
+  }
+  
+  .timeline {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding-inline: 0.5rem;
+    padding-block: 1.5rem;
+  }
+  
+  .card-wrap {
+    padding-inline: 0.5rem;
+    padding-block: 1rem;
+  }
+  
+  .card-header {
+    padding: 1rem;
+  }
+  
+  .card-body {
+    padding: 0 1rem;
+  }
+  
+  .curriculum-card.open .card-body {
+    padding: 0.75rem 1rem;
+  }
+  
+  .card-body li {
+    font-size: 0.875rem;
+    margin: 0.5rem 0;
+  }
+}

@@ -1,0 +1,65 @@
+<section class="section testimonials-section">
+  <div class="container">
+    <h2 class="section-title">Student Success Stories</h2>
+    <div class="testimonials-carousel">
+      <div class="carousel-inner">
+        <div
+          class="testimonial-card"
+          *ngFor="let testimonial of testimonials; let i = index"
+          [class.active]="i === currentIndex"
+          role="group"
+          [attr.aria-hidden]="i !== currentIndex"
+        >
+          <div class="card-content">
+            <img
+              class="avatar"
+              [src]="testimonial.avatarUrl"
+              [alt]="'Photo of ' + testimonial.author"
+              aria-hidden="true"
+            />
+            <div class="stars">
+              <i class="fas fa-star" *ngFor="let s of [1, 2, 3, 4, 5].slice(0, testimonial.rating)"></i>
+            </div>
+            <p class="quote">"{{ testimonial.quote }}"</p>
+            <p class="author">{{ testimonial.author }}</p>
+            <p class="role">{{ testimonial.role }} {{ testimonial.company ? 'at ' + testimonial.company : '' }}</p>
+            <a
+              *ngIf="testimonial.projectLink"
+              class="project-link"
+              [href]="testimonial.projectLink"
+              target="_blank"
+              rel="noopener"
+              [attr.aria-label]="'View ' + testimonial.author + '\'s project'"
+            >
+              View Project <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control prev"
+        (click)="prevTestimonial()"
+        aria-label="Previous testimonial"
+      >
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button
+        class="carousel-control next"
+        (click)="nextTestimonial()"
+        aria-label="Next testimonial"
+      >
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <div class="carousel-dots">
+        <span
+          *ngFor="let testimonial of testimonials; let i = index"
+          class="dot"
+          [class.active]="i === currentIndex"
+          (click)="goToTestimonial(i)"
+          [attr.aria-label]="'Go to testimonial ' + (i + 1)"
+          role="button"
+        ></span>
+      </div>
+    </div>
+  </div>
+</section>

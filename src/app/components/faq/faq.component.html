@@ -1,0 +1,89 @@
+<section class="section bg-gray-100">
+  <div class="container">
+    <div class="faq-header">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">Everything you need to know about our MERN Stack Mastery course</p>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="category-tabs">
+      <button 
+        class="category-tab" 
+        [class.active]="activeCategory === 'all'"
+        (click)="setCategory('all')">
+        <i class="fas fa-th-large"></i>
+        All Questions
+      </button>
+      <button 
+        class="category-tab" 
+        [class.active]="activeCategory === 'general'"
+        (click)="setCategory('general')">
+        <i class="fas fa-info-circle"></i>
+        General
+      </button>
+      <button 
+        class="category-tab" 
+        [class.active]="activeCategory === 'technical'"
+        (click)="setCategory('technical')">
+        <i class="fas fa-code"></i>
+        Technical
+      </button>
+      <button 
+        class="category-tab" 
+        [class.active]="activeCategory === 'career'"
+        (click)="setCategory('career')">
+        <i class="fas fa-briefcase"></i>
+        Career
+      </button>
+      <button 
+        class="category-tab" 
+        [class.active]="activeCategory === 'payment'"
+        (click)="setCategory('payment')">
+        <i class="fas fa-credit-card"></i>
+        Payment
+      </button>
+    </div>
+
+    <!-- FAQ Items -->
+    <div class="faq-container">
+      <div class="card-wrap">
+        <div class="acc-item" *ngFor="let item of filteredItems; let i=index">
+          <button class="acc-btn" (click)="toggle(i)" [attr.aria-expanded]="open === i">
+            <div class="question-content">
+              <span class="question-text">{{ item.q }}</span>
+              <span class="category-badge" [class]="'badge-' + item.category">
+                {{ item.category | titlecase }}
+              </span>
+            </div>
+            <div class="icon-container">
+              <i class="fas fa-chevron-up" [class.rotated]="open === i"></i>
+            </div>
+          </button>
+          <div class="acc-panel" [class.open]="open === i" [attr.aria-hidden]="open !== i">
+            <div class="answer-content">
+              <p>{{ item.a }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- No Results Message -->
+      <div class="no-results" *ngIf="filteredItems.length === 0">
+        <i class="fas fa-search"></i>
+        <p>No questions found for this category.</p>
+      </div>
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="faq-cta">
+      <div class="cta-content">
+        <h3>Still have questions?</h3>
+        <p>Can't find what you're looking for? Our team is here to help!</p>
+        <button class="btn-pill" (click)="scrollToContact()">
+          <i class="fas fa-envelope"></i>
+          Contact Us
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

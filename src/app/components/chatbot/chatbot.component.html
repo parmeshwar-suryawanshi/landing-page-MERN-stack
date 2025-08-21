@@ -1,0 +1,17 @@
+<div class="chatbot" [class.open]="isOpen">
+  <div class="chat-window" *ngIf="isOpen">
+    <div class="messages">
+      <div *ngFor="let m of messages" class="msg" [class.bot]="m.isBot" [class.user]="!m.isBot">
+        <span>{{ m.text }}</span>
+      </div>
+    </div>
+    <div class="input">
+      <input [(ngModel)]="input" type="text" placeholder="Ask about MERN..."
+        (keyup.enter)="send()">
+      <button (click)="send()">Send</button>
+    </div>
+  </div>
+  <button class="fab" (click)="toggle()">
+    <i class="fas fa-robot"></i><span class="ml"> MERN Chat</span>
+  </button>
+</div>

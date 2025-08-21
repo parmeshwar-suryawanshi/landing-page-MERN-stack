@@ -1,0 +1,134 @@
+<section class="section resources-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="resources-header text-center">
+      <h2 class="section-title">MERN Learning Resources</h2>
+      <p class="section-subtitle">
+        Access free tools, premium content, and join our thriving community of MERN developers
+      </p>
+    </div>
+
+    <!-- Email Signup Banner -->
+    <div class="signup-banner" *ngIf="!submitted">
+      <div class="banner-content">
+        <div class="banner-text">
+          <h3>🎁 Get Free MERN Resources</h3>
+          <p>Sign up and instantly access our starter templates, cheat sheets, and weekly challenges!</p>
+        </div>
+        <div class="signup-form">
+          <input
+            type="email"
+            [(ngModel)]="email"
+            placeholder="Enter your email address"
+            class="email-input"
+          />
+          <button 
+            class="btn-primary" 
+            (click)="submit()"
+            [disabled]="isLoading">
+            <span *ngIf="!isLoading">Get Free Resources</span>
+            <span *ngIf="isLoading">
+              <i class="fas fa-spinner fa-spin"></i>
+              Sending...
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" *ngIf="submitted">
+      <div class="success-content">
+        <i class="fas fa-check-circle"></i>
+        <h3>🎉 Welcome to the MERN Community!</h3>
+        <p>Check your inbox for your free resources. You'll also get weekly updates and exclusive content.</p>
+        <button class="btn-secondary" (click)="submitted = false">Get More Resources</button>
+      </div>
+    </div>
+
+    <!-- Resource Tabs -->
+    <div class="resource-tabs">
+      <button 
+        class="resource-tab" 
+        [class.active]="activeTab === 'free'"
+        (click)="setTab('free')">
+        <i class="fas fa-gift"></i>
+        <span>Free Resources</span>
+        <span class="count">{{ freeResources.length }}</span>
+      </button>
+      <button 
+        class="resource-tab" 
+        [class.active]="activeTab === 'premium'"
+        (click)="setTab('premium')">
+        <i class="fas fa-crown"></i>
+        <span>Premium</span>
+        <span class="count">{{ premiumResources.length }}</span>
+      </button>
+      <button 
+        class="resource-tab" 
+        [class.active]="activeTab === 'community'"
+        (click)="setTab('community')">
+        <i class="fas fa-users"></i>
+        <span>Community</span>
+        <span class="count">{{ communityResources.length }}</span>
+      </button>
+    </div>
+
+    <!-- Resources Grid -->
+    <div class="resources-grid">
+      <div class="resource-card" *ngFor="let resource of filteredResources">
+        <div class="resource-icon">
+          <i [class]="resource.icon"></i>
+        </div>
+        <div class="resource-content">
+          <h4 class="resource-title">{{ resource.title }}</h4>
+          <p class="resource-description">{{ resource.description }}</p>
+          <div class="resource-actions">
+            <button 
+              class="btn-download" 
+              (click)="downloadResource(resource)"
+              [disabled]="!resource.isAvailable">
+              <i class="fas fa-download"></i>
+              {{ resource.category === 'community' ? 'Join' : 'Download' }}
+            </button>
+            <span class="resource-badge" [class]="'badge-' + resource.category">
+              {{ resource.category | titlecase }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Community CTA -->
+    <div class="community-cta" *ngIf="activeTab === 'community'">
+      <div class="cta-content">
+        <h3>Ready to Join Our Community?</h3>
+        <p>Connect with 10,000+ MERN developers, share projects, and accelerate your learning journey!</p>
+        <button class="btn-community" (click)="joinCommunity()">
+          <i class="fab fa-discord"></i>
+          Join Discord Community
+        </button>
+      </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-section">
+      <div class="stat-item">
+        <div class="stat-number">10,000+</div>
+        <div class="stat-label">Active Developers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Free Resources</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Community Support</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">95%</div>
+        <div class="stat-label">Success Rate</div>
+      </div>
+    </div>
+  </div>
+</section>
